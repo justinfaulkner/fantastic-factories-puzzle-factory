@@ -1,15 +1,16 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { inject } from '@ember/service';
 
 export default Component.extend({
 
-  blueprintsForDropdown: computed(function() {
+  blueprintLibrary: inject(),
 
+  blueprintsForDropdown: computed(function() {
+    return this.get('blueprintLibrary.mappings')();
   }),
 
   actions: {
-    addBlueprint(blueprint) {
-
-    }
+    
   }
 });

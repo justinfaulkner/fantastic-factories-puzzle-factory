@@ -7,9 +7,10 @@
 
   <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
   <strong>Blueprints:</strong>
+
   {{#power-select
-    options=blueprints
-    onchange=(action 'addBlueprint')
+    options=blueprintsForDropdown
+    onchange=(action addBlueprint)
     as |blueprint|
   }}
     {{blueprint.name}}
@@ -22,10 +23,11 @@
   <img src="images/Basic-Actions-6.png" />
 {{/if}}
 
-<img src="images/cards/Manufactory.png" />
-<img src="images/cards/Biolab.png" />
-<img src="images/cards/Fitness-Center.png" />
 <img src="images/cards/Nuclear-Plant.png" />
+
+{{#each selectedBlueprints as |blueprint|}}
+  <img src="images/cards/{{blueprint.name}}.png" />
+{{/each}}
 {{#each cards as |card|}}
 {{/each}}
 
