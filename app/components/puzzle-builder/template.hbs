@@ -1,3 +1,32 @@
-{{yield}}
+<div class="card border-light mb-3">
+  <div class="card-header">Fantastic Factories</div>
+  <div class="card-body">
+    <h5 class="card-title">Welcome to the Puzzle Factory!</h5>
+    <p class="card-text">Build your own One Turn Puzzle for Fantastic Factories! Pick the Blueprints, dice values, and starting resources you want.</p>
+  </div>
 
-<img src="images/Basic-Actions-6.png" />
+  <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
+  <strong>Blueprints:</strong>
+  {{#power-select
+    options=blueprints
+    onchange=(action 'addBlueprint')
+    as |blueprint|
+  }}
+    {{blueprint.name}}
+  {{/power-select}}
+  <strong>Dice:</strong>
+  <strong>Resources:</strong>
+</div>
+
+{{#if board}}
+  <img src="images/Basic-Actions-6.png" />
+{{/if}}
+
+<img src="images/cards/Manufactory.png" />
+<img src="images/cards/Biolab.png" />
+<img src="images/cards/Fitness-Center.png" />
+<img src="images/cards/Nuclear-Plant.png" />
+{{#each cards as |card|}}
+{{/each}}
+
+{{yield}}
