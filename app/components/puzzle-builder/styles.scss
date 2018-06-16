@@ -1,5 +1,40 @@
 & {
-  img {
-    width: 300px!important;
+  img.selected-card-image {
+    width: 300px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  img.player-board-image {
+    width: 300px;
+    margin-right: 5px;
+    margin-bottom: 30px;
+    float: left;
+  }
+
+  img.selected-die-image {
+    display: inline!important;
+    width: 80px;
+  }
+
+  img.selected-resource-image {
+    display: inline!important;
+    width: 80px;
+  }
+
+  .dice-and-resources {
+    text-align: center !important;
+  }
+
+  .resources {
+    display: inline-block;
+    margin-left: 2em;
+  }
+
+  .factory-compound {
+    margin-top: 1em;
+    img {
+      vertical-align: top;
+    }
   }
 }

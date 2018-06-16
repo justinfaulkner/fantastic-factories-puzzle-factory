@@ -4,13 +4,25 @@ import { inject } from '@ember/service';
 
 export default Component.extend({
 
-  blueprintLibrary: inject(),
+  componentLibrary: inject(),
 
-  blueprintsForDropdown: computed(function() {
-    return this.get('blueprintLibrary.mappings')();
-  }),
+  editMode: false,
+
+  init() {
+    this._super(...arguments);
+    if(this.get('cardIDs.length') == 0) {
+      this.set('editMode', true);
+    }
+  },
 
   actions: {
-    
+    enterEditMode() {
+      this.set('editMode', true);
+    },
+
+    exitEditMode() {
+      this.set('editMode', false);
+    }
   }
+
 });

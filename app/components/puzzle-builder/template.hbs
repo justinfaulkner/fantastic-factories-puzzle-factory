@@ -1,34 +1,104 @@
 <div class="card border-light mb-3">
-  <div class="card-header">Fantastic Factories</div>
-  <div class="card-body">
-    <h5 class="card-title">Welcome to the Puzzle Factory!</h5>
-    <p class="card-text">Build your own One Turn Puzzle for Fantastic Factories! Pick the Blueprints, dice values, and starting resources you want.</p>
+  <div class="card-header">
+    <div class="row">
+      <div class="col-sm-10">
+        Fantastic Factories
+      </div>
+      <div class="col-sm-2">
+        {{#if editMode}}
+          <a href="#" {{action 'exitEditMode'}}>View Mode</a>
+        {{else}}
+          <a href="#" {{action 'enterEditMode'}}>Edit Mode</a>
+        {{/if}}
+      </div>
+    </div>
   </div>
 
-  <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
-  <strong>Blueprints:</strong>
+  <div class="card-body">
+    {{#if editMode}}
+      <h5 class="card-title">Welcome to the Puzzle Factory!</h5>
+      <p class="card-text">Build your own One Turn Puzzle for Fantastic Factories! Pick the Blueprints, dice values, and starting resources you want.</p>
+      <p>When you're ready to release your puzzle into the wild, just copy the URL for this page and share it! Anyone visiting this unique URL will see this exact puzzle!</p>
+    {{else}}
+      <h5 class="card-title">Welcome to the Puzzle Factory!</h5>
+      <p class="card-text">Try to solve this puzzle! Manufacture as many goods as possible. Remember, you can't use the same card more than once.</p>
+    {{/if}}
+  </div>
 
-  {{#power-select
-    options=blueprintsForDropdown
-    onchange=(action addBlueprint)
-    as |blueprint|
-  }}
-    {{blueprint.name}}
-  {{/power-select}}
-  <strong>Dice:</strong>
-  <strong>Resources:</strong>
+
+  {{#if editMode}}
+    <div class="row">
+      <div class="col-sm-3">
+        <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
+      </div>
+
+      <div class="col-sm-3">
+        <strong>Add Blueprint:</strong>
+        {{#power-select
+          options=componentLibrary.blueprints
+          onchange=(action addBlueprint)
+          as |blueprint|
+        }}
+          {{blueprint.name}}
+        {{/power-select}}
+      </div>
+
+      <div class="col-sm-3">
+        <strong>Add Die:</strong>
+        {{#power-select
+          options=componentLibrary.dice
+          onchange=(action addDie)
+          as |die|
+        }}
+          <img src="images/v1/dice/dice_icon_{{die.key}}.png" class="dropdown-die-image" />
+        {{/power-select}}
+
+      </div>
+
+      <div class="col-sm-3">
+        <strong>Add Resource:</strong>
+        {{#power-select
+          options=componentLibrary.resources
+          onchange=(action addResource)
+          as |resource|
+        }}
+          <img src="images/v1/resources/{{resource.name}}.png" class="dropdown-resource-image" />
+        {{/power-select}}
+      </div>
+    </div>
+  {{/if}}
+
 </div>
 
-{{#if board}}
-  <img src="images/v1/Basic-Actions-6.png" />
-{{/if}}
+<div class="dice-and-resources">
+  {{~#each selectedDice as |die index|~}}
+    {{#deletable-list-item list=diceIDs index=index deletable=editMode}}
+      <img src="images/v1/dice/dice_icon_{{die.key}}.png" class="selected-die-image" />
+    {{/deletable-list-item}}
+  {{~/each~}}
 
-<img src="images/v1/cards/Nuclear-Plant.png" />
+  <div class="resources">
+    {{~#each selectedResources as |resource index|~}}
+      {{#deletable-list-item list=resourceIDs index=index deletable=editMode}}
+        <img src="images/v1/resources/{{resource.name}}.png" class="selected-resource-image" />
+      {{/deletable-list-item}}
+    {{~/each~}}
+  </div>
 
-{{#each selectedBlueprints as |blueprint|}}
-  <img src="images/v1/cards/{{blueprint.name}}.png" />
-{{/each}}
-{{#each cards as |card|}}
-{{/each}}
+</div>
+
+<div class="factory-compound">
+  {{#if board}}
+    <img src="images/v1/Basic-Actions-6.png" class="player-board-image" />
+  {{/if}}
+
+  {{#each selectedBlueprints as |blueprint index|}}
+    {{#deletable-list-item list=cardIDs index=index deletable=editMode}}
+      <img src="images/v1/cards/{{blueprint.name}}.png" class="selected-card-image" />
+    {{/deletable-list-item}}
+  {{/each}}
+</div>
+
+
 
 {{yield}}

@@ -1,0 +1,6 @@
+{{yield}}
+{{#if deletable}}
+  <div class="delete-icon" {{action 'deleteItem'}}>
+    {{fa-icon 'times-circle'}}
+  </div>
+{{/if}}

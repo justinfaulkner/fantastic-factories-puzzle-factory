@@ -1,0 +1,12 @@
+& {
+  display: inline-block;
+  position: relative;
+
+  .delete-icon {
+    position: absolute;
+    color: red;
+    bottom: 0;
+    right: 0;
+    font-size: 120%;
+  }
+}

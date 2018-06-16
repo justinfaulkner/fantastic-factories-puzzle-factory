@@ -17,6 +17,8 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@fortawesome/ember-fontawesome": "0.1.0-8",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "bootstrap": "^4.1.1",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
@@ -49,5 +51,7 @@
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@fortawesome/fontawesome-free-solid": "^5.0.13"
+  }
 }
