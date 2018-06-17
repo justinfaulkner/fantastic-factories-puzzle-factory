@@ -20,6 +20,7 @@ files.sort.each do |file|
   file['.png'] = ''
   key = file[0..2].downcase
   key = build_key(key, keys)
-  puts "{key: '#{key}', name: '#{file}'},"
+  pretty_name = file.gsub('-', ' ')
+  puts "{key: '#{key}', name: '#{file}', prettyName: '#{pretty_name}'},"
   keys << key
 end

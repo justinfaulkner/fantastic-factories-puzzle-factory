@@ -1,12 +1,15 @@
+
 & {
   img.selected-card-image {
     width: 300px;
+    max-width: 38vw;
     margin-right: 5px;
     margin-bottom: 5px;
   }
 
   img.player-board-image {
     width: 300px;
+    max-width: 38vw;
     margin-right: 5px;
     margin-bottom: 30px;
     float: left;
@@ -15,11 +18,19 @@
   img.selected-die-image {
     display: inline!important;
     width: 80px;
+
+    @include media-breakpoint-down(sm) {
+      width: 60px;
+    }
   }
 
   img.selected-resource-image {
     display: inline!important;
     width: 80px;
+
+    @include media-breakpoint-down(sm) {
+      width: 60px;
+    }
   }
 
   .dice-and-resources {
@@ -36,5 +47,9 @@
     img {
       vertical-align: top;
     }
+  }
+
+  .zoom-link {
+    cursor: zoom-in;
   }
 }

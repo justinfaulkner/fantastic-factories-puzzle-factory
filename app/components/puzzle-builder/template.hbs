@@ -38,10 +38,11 @@
         <strong>Add Blueprint:</strong>
         {{#power-select
           options=componentLibrary.blueprints
+          searchField="name"
           onchange=(action addBlueprint)
           as |blueprint|
         }}
-          {{blueprint.name}}
+          {{blueprint.prettyName}}
         {{/power-select}}
       </div>
 
@@ -49,6 +50,7 @@
         <strong>Add Die:</strong>
         {{#power-select
           options=componentLibrary.dice
+          searchEnabled=false
           onchange=(action addDie)
           as |die|
         }}
@@ -61,6 +63,7 @@
         <strong>Add Resource:</strong>
         {{#power-select
           options=componentLibrary.resources
+          searchEnabled=false
           onchange=(action addResource)
           as |resource|
         }}
@@ -91,12 +94,21 @@
 
 <div class="factory-compound">
   {{#if board}}
-    <img src="images/v1/Basic-Actions-6.png" class="player-board-image" />
+    {{#if editMode}}
+      <img src="images/v1/Basic-Actions-6.png" class="player-board-image" />
+    {{else}}
+      <a href="images/v1/Basic-Actions-6.png" target="_blank" class="zoom-link"><img src="images/v1/Basic-Actions-6.png" class="player-board-image" /></a>
+    {{/if}}
+
   {{/if}}
 
   {{#each selectedBlueprints as |blueprint index|}}
     {{#deletable-list-item list=cardIDs index=index deletable=editMode}}
-      <img src="images/v1/cards/{{blueprint.name}}.png" class="selected-card-image" />
+      {{#if editMode}}
+        <img src="images/v1/cards/{{blueprint.name}}.png" class="selected-card-image" />
+      {{else}}
+        <a href="images/v1/cards/{{blueprint.name}}.png" target='_blank' class="zoom-link"><img src="images/v1/cards/{{blueprint.name}}.png" class="selected-card-image" /></a>
+      {{/if}}
     {{/deletable-list-item}}
   {{/each}}
 </div>
