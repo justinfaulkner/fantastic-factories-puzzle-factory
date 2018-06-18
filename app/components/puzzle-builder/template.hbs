@@ -1,16 +1,17 @@
 <div class="card bg-light mb-3">
   <div class="card-header">
     <div class="row">
-      <div class="col-sm-10">
-        <h5 class="card-title" >Welcome to the Puzzle Factory!</h5>
+      <div class="col-sm-12">
+        <div class="float-right">
+          <a href="#" class="btn btn-primary" {{action 'exportImage'}}>Export Image</a>
+          {{#if editMode}}
+            <a href="#" class="btn btn-primary" {{action 'exitEditMode'}}>{{fa-icon 'eye' prefix='far'}} View Mode</a>
+          {{else}}
+            <a href="#" class="btn btn-primary"  {{action 'enterEditMode'}}>{{fa-icon 'pencil-alt'}} Edit Mode</a>
+          {{/if}}
+        </div>
 
-      </div>
-      <div class="col-sm-2">
-        {{#if editMode}}
-          <a href="#" class="btn btn-primary" {{action 'exitEditMode'}}>{{fa-icon 'eye' prefix='far'}} View Mode</a>
-        {{else}}
-          <a href="#" class="btn btn-primary"  {{action 'enterEditMode'}}>{{fa-icon 'pencil-alt'}} Edit Mode</a>
-        {{/if}}
+        <h5 class="card-title" >Welcome to the Puzzle Factory!</h5>
       </div>
     </div>
   </div>
@@ -74,6 +75,7 @@
 
 </div>
 
+<div id="puzzle-body">
 <div class="dice-and-resources">
   {{~#each selectedDice as |die index|~}}
     {{#deletable-list-item list=diceIDs index=index deletable=editMode}}
@@ -111,6 +113,6 @@
     {{/deletable-list-item}}
   {{/each}}
 </div>
-
+</div>
 
 {{yield}}

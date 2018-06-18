@@ -22,6 +22,18 @@ export default Component.extend({
 
     exitEditMode() {
       this.set('editMode', false);
+    },
+
+    exportImage() {
+      html2canvas($('#puzzle-body')[0],
+        { 'windowWidth': 1200 }
+      ).then(function(canvas) {
+        // Download
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.download = 'Fantastic_Factories_Puzzle.jpg';
+        a.click();
+      });
     }
   }
 
