@@ -1,16 +1,31 @@
-<div class="card border-light mb-3">
+<div class="row">
+  <div class="col-md-8">
+    <a href='https://www.kickstarter.com/projects/1602062107/fantastic-factories-a-dice-placement-engine-buildi?ref=b4kuv6' target="_blank">
+      Fantastic Factories - Live on Kickstarter Now!
+    </a>
+  </div>
+  <div class="col">
+  </div>
+  <div class="col-md-3 text-right">
+
+  </div>
+</div>
+
+
+
+
+<div class="card bg-light mb-3">
   <div class="card-header">
     <div class="row">
       <div class="col-sm-10">
-        <a href='https://www.kickstarter.com/projects/1602062107/fantastic-factories-a-dice-placement-engine-buildi?ref=b4kuv6' target="_blank">
-          Fantastic Factories - Live on Kickstarter Now!
-        </a>
+        <h5 class="card-title" >Welcome to the Puzzle Factory!</h5>
+
       </div>
       <div class="col-sm-2">
         {{#if editMode}}
-          <a href="#" {{action 'exitEditMode'}}>View Mode</a>
+          <a href="#" class="btn btn-primary" {{action 'exitEditMode'}}>{{fa-icon 'eye' prefix='far'}} View Mode</a>
         {{else}}
-          <a href="#" {{action 'enterEditMode'}}>Edit Mode</a>
+          <a href="#" class="btn btn-primary"  {{action 'enterEditMode'}}>{{fa-icon 'pencil-alt'}} Edit Mode</a>
         {{/if}}
       </div>
     </div>
@@ -18,60 +33,60 @@
 
   <div class="card-body">
     {{#if editMode}}
-      <h5 class="card-title">Welcome to the Puzzle Factory!</h5>
       <p class="card-text">Build your own One Turn Puzzle for Fantastic Factories! Pick the Blueprints, dice values, and starting resources you want.</p>
-      <p>When you're ready to release your puzzle into the wild, just copy the URL for this page and share it! Anyone visiting this unique URL will see this exact puzzle!</p>
+      <p>When you're ready to release your puzzle into the wild, <strong>just copy the URL for this page and share it!</strong> Anyone visiting this unique URL will see this exact puzzle!</p>
     {{else}}
-      <h5 class="card-title">Welcome to the Puzzle Factory!</h5>
       <p class="card-text">Try to solve this puzzle! Manufacture as many goods as possible. Remember, you can't use the same card more than once.</p>
+    {{/if}}
+
+    {{#if editMode}}
+      <div class="row">
+        <div class="col-sm-3">
+          <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
+        </div>
+
+        <div class="col-sm-3">
+          <strong>Add Blueprint:</strong>
+          {{#power-select
+            options=componentLibrary.blueprints
+            searchField="name"
+            onchange=(action addBlueprint)
+            as |blueprint|
+          }}
+            {{blueprint.prettyName}}
+          {{/power-select}}
+        </div>
+
+        <div class="col-sm-3">
+          <strong>Add Die:</strong>
+          {{#power-select
+            options=componentLibrary.dice
+            searchEnabled=false
+            onchange=(action addDie)
+            as |die|
+          }}
+            <img src="images/v1/dice/dice_icon_{{die.key}}.png" class="dropdown-die-image" />
+          {{/power-select}}
+
+        </div>
+
+        <div class="col-sm-3">
+          <strong>Add Resource:</strong>
+          {{#power-select
+            options=componentLibrary.resources
+            searchEnabled=false
+            onchange=(action addResource)
+            as |resource|
+          }}
+            <img src="images/v1/resources/{{resource.name}}.png" class="dropdown-resource-image" />
+          {{/power-select}}
+        </div>
+      </div>
     {{/if}}
   </div>
 
 
-  {{#if editMode}}
-    <div class="row">
-      <div class="col-sm-3">
-        <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
-      </div>
 
-      <div class="col-sm-3">
-        <strong>Add Blueprint:</strong>
-        {{#power-select
-          options=componentLibrary.blueprints
-          searchField="name"
-          onchange=(action addBlueprint)
-          as |blueprint|
-        }}
-          {{blueprint.prettyName}}
-        {{/power-select}}
-      </div>
-
-      <div class="col-sm-3">
-        <strong>Add Die:</strong>
-        {{#power-select
-          options=componentLibrary.dice
-          searchEnabled=false
-          onchange=(action addDie)
-          as |die|
-        }}
-          <img src="images/v1/dice/dice_icon_{{die.key}}.png" class="dropdown-die-image" />
-        {{/power-select}}
-
-      </div>
-
-      <div class="col-sm-3">
-        <strong>Add Resource:</strong>
-        {{#power-select
-          options=componentLibrary.resources
-          searchEnabled=false
-          onchange=(action addResource)
-          as |resource|
-        }}
-          <img src="images/v1/resources/{{resource.name}}.png" class="dropdown-resource-image" />
-        {{/power-select}}
-      </div>
-    </div>
-  {{/if}}
 
 </div>
 
@@ -105,9 +120,9 @@
   {{#each selectedBlueprints as |blueprint index|}}
     {{#deletable-list-item list=cardIDs index=index deletable=editMode}}
       {{#if editMode}}
-        <img src="images/v1/cards/{{blueprint.name}}.png" class="selected-card-image" />
+        <img src="images/v2/cards/{{blueprint.name}}.png" class="selected-card-image" />
       {{else}}
-        <a href="images/v1/cards/{{blueprint.name}}.png" target='_blank' class="zoom-link"><img src="images/v1/cards/{{blueprint.name}}.png" class="selected-card-image" /></a>
+        <a href="images/v2/cards/{{blueprint.name}}.png" target='_blank' class="zoom-link"><img src="images/v2/cards/{{blueprint.name}}.png" class="selected-card-image" /></a>
       {{/if}}
     {{/deletable-list-item}}
   {{/each}}

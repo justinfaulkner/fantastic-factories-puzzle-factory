@@ -11,9 +11,8 @@ export default Service.extend({
       {key: 'bio', name: 'Biolab', prettyName: 'Biolab'},
       {key: 'bla', name: 'Black-Market', prettyName: 'Black Market'},
       {key: 'con', name: 'Concrete-Plant', prettyName: 'Concrete Plant'},
-      {key: 'cry', name: 'Cryonics-Facility', prettyName: 'Cryonics Facility'},
+      {key: 'cry', name: 'Cryolab', prettyName: 'Cryolab'},
       {key: 'doj', name: 'Dojo', prettyName: 'Dojo'},
-      {key: 'fab', name: 'Fabricator', prettyName: 'Fabricator'},
       {key: 'fit', name: 'Fitness-Center', prettyName: 'Fitness Center'},
       {key: 'fou', name: 'Foundry', prettyName: 'Foundry'},
       {key: 'ful', name: 'Fulfillment-Center', prettyName: 'Fulfillment Center'},
@@ -22,7 +21,6 @@ export default Service.extend({
       {key: 'gym', name: 'Gym', prettyName: 'Gym'},
       {key: 'har', name: 'Harvester', prettyName: 'Harvester'},
       {key: 'inc', name: 'Incinerator', prettyName: 'Incinerator'},
-      {key: 'jun', name: 'Junkyard', prettyName: 'Junkyard'},
       {key: 'lab', name: 'Laboratory', prettyName: 'Laboratory'},
       {key: 'man', name: 'Manufactory', prettyName: 'Manufactory'},
       {key: 'meg', name: 'Mega-Factory', prettyName: 'Mega Factory'},
@@ -45,6 +43,7 @@ export default Service.extend({
       {key: 'sol', name: 'Solar-Array', prettyName: 'Solar Array'},
       {key: 'tem', name: 'Temp-Agency', prettyName: 'Temp Agency'},
       {key: 'tra', name: 'Trash-Compactor', prettyName: 'Trash Compactor'},
+      {key: 'uni', name: 'University', prettyName: 'University'},
       {key: 'war', name: 'Warehouse', prettyName: 'Warehouse'}
     ];
     return Ember.A(objects.map((obj) => {
