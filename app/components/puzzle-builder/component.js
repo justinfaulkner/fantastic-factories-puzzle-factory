@@ -26,7 +26,7 @@ export default Component.extend({
 
     exportImage() {
       html2canvas($('#puzzle-body')[0],
-        { 'windowWidth': 1200 }
+        { 'windowWidth': 1000 }
       ).then(function(canvas) {
         // Download
         var a = document.createElement('a');
