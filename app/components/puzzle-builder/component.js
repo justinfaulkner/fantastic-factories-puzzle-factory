@@ -34,6 +34,13 @@ export default Component.extend({
         a.download = 'Fantastic_Factories_Puzzle.jpg';
         a.click();
       });
+    },
+
+    newPuzzle() {
+      this.set('cardIDs', Ember.A());
+      this.set('resourceIDs', Ember.A());
+      this.set('diceIDs', Ember.A());
+      this.set('editMode', true);
     }
   }
 
