@@ -12,78 +12,80 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col">
-    <div class="card bg-light mb-3">
-      <div class="card-body">
-        <h5 class="card-title" >Welcome to the Puzzle Factory!</h5>
+{{#if (or editMode (not hideInstructions))}}
+  <div class="row">
+    <div class="col">
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <h5 class="card-title" >Welcome to the Puzzle Factory!</h5>
 
-        {{#if editMode}}
-          <p class="card-text">Build your own One Turn Puzzle for Fantastic Factories! Pick the Blueprints, dice values, and starting resources you want.</p>
-          <p>When you're ready to release your puzzle into the wild, <strong>just copy the URL for this page and share it!</strong> Anyone visiting this unique URL will see this exact puzzle!
-            <small><a href="https://boardgamegeek.com/thread/2011551/puzzle-read-first-introducing-fantastic-factories" target="_blank"><nobr>Learn more about Puzzle Builder</nobr> (and share your puzzles with others) on BGG</a></small></p>
-          <p></p>
-        {{else}}
-          <p class="card-text">Try to solve this puzzle! Manufacture as many goods as possible. Remember, you can't use the same card more than once.</p>
-        {{/if}}
+          {{#if editMode}}
+            <p class="card-text">Build your own One Turn Puzzle for Fantastic Factories! Pick the Blueprints, dice values, and starting resources you want.</p>
+            <p>When you're ready to release your puzzle into the wild, <strong>just copy the URL for this page and share it!</strong> Anyone visiting this unique URL will see this exact puzzle!
+              <small><a href="https://boardgamegeek.com/thread/2011551/puzzle-read-first-introducing-fantastic-factories" target="_blank"><nobr>Learn more about Puzzle Factory</nobr> (and share your puzzles with others) on BGG</a></small></p>
+            <p></p>
+          {{else}}
+            <p class="card-text">Try to solve this puzzle! Manufacture as many goods as possible. Remember, you can't use the same card more than once.</p>
+          {{/if}}
 
-        {{#if editMode}}
-          <div class="row">
-            <div class="col-sm-3">
-              <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
+          {{#if editMode}}
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Show Player Board: {{input type="checkbox" name="board" checked=board}}</label>
+              </div>
+
+              <div class="col-sm-3">
+                <strong>Add Blueprint:</strong>
+                <small><a href='/puzzle?cardIDs=%5B"alu"%2C"ass"%2C"bat"%2C"bea"%2C"bio"%2C"bla"%2C"con"%2C"cry"%2C"doj"%2C"fit"%2C"fou"%2C"ful"%2C"gol"%2C"gym"%2C"har"%2C"inc"%2C"lab"%2C"man"%2C"meg"%2C"meg111"%2C"mot"%2C"nuc"%2C"obe1"%2C"pow"%2C"rec"%2C"ref"%2C"rep"%2C"rob11"%2C"scr"%2C"sol"%2C"tem"%2C"tra"%2C"uni"%2C"war"%5D&hideInstructions=true' target="_blank">
+                  See All Cards
+                </a></small>
+                {{#power-select
+                  options=componentLibrary.blueprints
+                  searchField="name"
+                  onchange=(action addBlueprint)
+                  as |blueprint|
+                }}
+                  {{blueprint.prettyName}}
+                {{/power-select}}
+              </div>
+
+              <div class="col-sm-3">
+                <strong>Add Die:</strong>
+                {{#power-select
+                  options=componentLibrary.dice
+                  searchEnabled=false
+                  onchange=(action addDie)
+                  as |die|
+                }}
+                  <img src="images/v1/dice/dice_icon_{{die.key}}.png" class="dropdown-die-image" />
+                {{/power-select}}
+
+              </div>
+
+              <div class="col-sm-3">
+                <strong>Add Resource:</strong>
+                {{#power-select
+                  options=componentLibrary.resources
+                  searchEnabled=false
+                  onchange=(action addResource)
+                  as |resource|
+                }}
+                  <img src="images/v1/resources/{{resource.name}}.png" class="dropdown-resource-image" />
+                {{/power-select}}
+              </div>
             </div>
+            <div class="row">
+              <div class="col text-right">
 
-            <div class="col-sm-3">
-              <strong>Add Blueprint:</strong>
-              <small><a href='/puzzle?cardIDs=%5B"alu"%2C"ass"%2C"bat"%2C"bea"%2C"bio"%2C"bla"%2C"con"%2C"cry"%2C"doj"%2C"fit"%2C"fou"%2C"ful"%2C"gol"%2C"gym"%2C"har"%2C"inc"%2C"lab"%2C"man"%2C"meg"%2C"meg111"%2C"mot"%2C"nuc"%2C"obe1"%2C"pow"%2C"rec"%2C"ref"%2C"rep"%2C"rob11"%2C"scr"%2C"sol"%2C"tem"%2C"tra"%2C"uni"%2C"war"%5D' target="_blank">
-                See All Cards
-              </a></small>
-              {{#power-select
-                options=componentLibrary.blueprints
-                searchField="name"
-                onchange=(action addBlueprint)
-                as |blueprint|
-              }}
-                {{blueprint.prettyName}}
-              {{/power-select}}
+
+              </div>
             </div>
-
-            <div class="col-sm-3">
-              <strong>Add Die:</strong>
-              {{#power-select
-                options=componentLibrary.dice
-                searchEnabled=false
-                onchange=(action addDie)
-                as |die|
-              }}
-                <img src="images/v1/dice/dice_icon_{{die.key}}.png" class="dropdown-die-image" />
-              {{/power-select}}
-
-            </div>
-
-            <div class="col-sm-3">
-              <strong>Add Resource:</strong>
-              {{#power-select
-                options=componentLibrary.resources
-                searchEnabled=false
-                onchange=(action addResource)
-                as |resource|
-              }}
-                <img src="images/v1/resources/{{resource.name}}.png" class="dropdown-resource-image" />
-              {{/power-select}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col text-right">
-
-
-            </div>
-          </div>
-        {{/if}}
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>
-</div>
+{{/if}}
 
 <div id="puzzle-body">
   {{#if (or (gt selectedDice.length 0) (gt selectedResources.length 0))}}

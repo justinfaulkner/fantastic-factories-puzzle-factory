@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 
 export default Controller.extend({
-  queryParams: ['board', 'cardIDs', 'diceIDs', 'resourceIDs'],
+  queryParams: ['board', 'cardIDs', 'diceIDs', 'resourceIDs','hideInstructions'],
 
   componentLibrary: inject(),
 
@@ -12,6 +12,7 @@ export default Controller.extend({
   resourceIDs: Ember.A(),
 
   board: true,
+  hideInstructions: false,
 
   selectedBlueprints: computed('cardIDs.[]', function() {
     let cardIDs = this.get('cardIDs');

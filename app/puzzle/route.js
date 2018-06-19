@@ -5,6 +5,7 @@ export default Route.extend({
     board: {},
     cardIDs: {},
     diceIDs: {},
-    resourceIDs: {}
+    resourceIDs: {},
+    hideInstructions: {}
   }
 });

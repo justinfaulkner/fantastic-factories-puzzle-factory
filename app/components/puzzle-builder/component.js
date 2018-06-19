@@ -7,6 +7,7 @@ export default Component.extend({
   componentLibrary: inject(),
 
   editMode: false,
+  hideInstructions: false,
 
   init() {
     this._super(...arguments);
@@ -41,6 +42,7 @@ export default Component.extend({
       this.set('resourceIDs', Ember.A());
       this.set('diceIDs', Ember.A());
       this.set('editMode', true);
+      this.set('hideInstructions', false);
     }
   }
 
