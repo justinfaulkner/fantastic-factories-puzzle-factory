@@ -1,4 +1,8 @@
 & {
+  .top-menu {
+    margin-bottom: 0.5em;
+  }
+
   img.selected-card-image {
     width: 295px;
     max-width: 38vw;
@@ -44,7 +48,7 @@
 
   .factory-compound {
     padding: 1em 10px;
-    
+
     img {
       vertical-align: top;
     }

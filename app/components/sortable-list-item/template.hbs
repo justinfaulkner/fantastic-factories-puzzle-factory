@@ -1,0 +1,13 @@
+{{yield}}
+{{#if moveable}}
+  {{#if (gt index 0)}}
+    <div class="move-left-icon" {{action 'moveLeft'}}>
+      {{fa-icon 'arrow-circle-left'}}
+    </div>
+  {{/if}}
+  {{#if (not lastItem)}}
+    <div class="move-right-icon" {{action 'moveRight'}}>
+      {{fa-icon 'arrow-circle-right'}}
+    </div>
+  {{/if}}
+{{/if}}
