@@ -10,6 +10,7 @@ export default Service.extend({
       {key: 'bea', name: 'Beacon', prettyName: 'Beacon'},
       {key: 'bio', name: 'Biolab', prettyName: 'Biolab'},
       {key: 'bla', name: 'Black-Market', prettyName: 'Black Market'},
+      {key: 'clo', name: 'Cloning-Facility', prettyName: 'Cloning Facility'},
       {key: 'con', name: 'Concrete-Plant', prettyName: 'Concrete Plant'},
       {key: 'cry', name: 'Cryolab', prettyName: 'Cryolab'},
       {key: 'doj', name: 'Dojo', prettyName: 'Dojo'},
@@ -20,6 +21,7 @@ export default Service.extend({
       {key: 'gol1', name: 'Golem-Red', prettyName: 'Golem Red'},
       {key: 'gym', name: 'Gym', prettyName: 'Gym'},
       {key: 'har', name: 'Harvester', prettyName: 'Harvester'},
+      {key: 'hea', name: 'Headquarters', prettyName: 'Headquarters'},
       {key: 'inc', name: 'Incinerator', prettyName: 'Incinerator'},
       {key: 'lab', name: 'Laboratory', prettyName: 'Laboratory'},
       {key: 'man', name: 'Manufactory', prettyName: 'Manufactory'},
@@ -42,6 +44,7 @@ export default Service.extend({
       {key: 'scr', name: 'Scrap-Yard', prettyName: 'Scrap Yard'},
       {key: 'sol', name: 'Solar-Array', prettyName: 'Solar Array'},
       {key: 'tem', name: 'Temp-Agency', prettyName: 'Temp Agency'},
+      {key: 'trad', name: 'Trade-School', prettyName: 'Trade School'},
       {key: 'tra', name: 'Trash-Compactor', prettyName: 'Trash Compactor'},
       {key: 'uni', name: 'University', prettyName: 'University'},
       {key: 'war', name: 'Warehouse', prettyName: 'Warehouse'}
