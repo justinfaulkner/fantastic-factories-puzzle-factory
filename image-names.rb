@@ -1,6 +1,6 @@
 require 'set'
 
-files = Dir["public/images/v2/cards/*"]
+files = Dir["public/images/v3/cards/*"]
 keys = Set.new
 
 def build_key(key, keys)
@@ -16,7 +16,7 @@ def build_key(key, keys)
 end
 
 files.sort.each do |file|
-  file['public/images/v2/cards/'] = ''
+  file['public/images/v3/cards/'] = ''
   file['.png'] = ''
   key = file[0..2].downcase
   key = build_key(key, keys)
